@@ -1,0 +1,7 @@
+# config
+.gitignore
+.travis.yml
+.npmignore
+
+# tests
+test.js

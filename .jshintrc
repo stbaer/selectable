@@ -1,0 +1,32 @@
+{
+    "node": true,
+    "bitwise": true,
+    "camelcase": true,
+    "curly": true,
+    "eqeqeq": true,
+    "forin": true,
+    "freeze": true,
+    "immed": true,
+    "latedef": true,
+    "newcap": true,
+    "noarg": true,
+    "sub": true,
+    "eqnull": true,
+    "browser": true,
+    "laxcomma": true,
+    "trailing": true,
+    "smarttabs": true,
+    "nonew": true,
+    "quotmark": false,
+    "newcap": true,
+    "nonbsp": true,
+    "undef": true,
+    "jquery": true,
+    "unused": "vars",
+    "esnext": false,
+    "globals": {
+        "console": true,
+        "global": true,
+        "browserify": true
+    }
+}
