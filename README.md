@@ -3,7 +3,9 @@ Simple helper class to make items selectable
 
 ### Install
 
-@TODO
+```
+npm i stbaer/selectable
+```
 
 ### Usage
 
