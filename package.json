@@ -1,0 +1,24 @@
+{
+  "name": "selectable",
+  "version": "0.0.0",
+  "description": "Simple helper class to make items selectable",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stbaer/selectable.git"
+  },
+  "keywords": [
+    "select",
+    "jQuery",
+    "browserify"
+  ],
+  "author": "Steffen Bär",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stbaer/selectable/issues"
+  },
+  "homepage": "https://github.com/stbaer/selectable"
+}
