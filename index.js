@@ -1,72 +1,137 @@
 /**
- *  @module selectable
- *  @requires jQuery
+ * @type {EventEmitter}
  */
+var EventEmitter = require('eventemitter3');
 
 /**
- * @class Selectable
+ * @class
+ * @extends {EventEmitter}
  * @constructor
- * @description Simple helper class for selectable items.
- * Takes a list of jquery elements, and optionally a string for the active class name.
- * If an Element is clicked it gets the active class and the other active class will be removed in case there
- * is one. Selectable#items trigger selectable.change (see example)
  *
  * @property {object} config
- * @property {jQuery} config.items The jquery elements
- * @property {string} [config.activeClass='active]
+ * @property {HTMLCollection} config.items
+ * @property {string} [config.activeClass='active']
+ * @property {boolean} [config.allowActiveDeselect=false] - if true clicking on an active item will deselect it
  * @example
- * new Selectable({ items: $('.someItems') })
- *      .items.on('selectable.change', function(ev, newItem, oldItem){
+ * var selectable = new Selectable({ items: document.querySelectorAll('.someItems') });
+ * selectable.on('selectable.change', function(newItem, oldItem){
  *          //do sth
  *       })
  *
  */
-var Selectable = function(config) {
+var Selectable = function (config) {
 
-    /** @type {jQuery} */
+    EventEmitter.call(this);
+    var self = this;
+
     this.items = config.items;
-    /** @type {string} */
     this.activeClass = config.activeClass || 'active';
-    var $active = this.items.find('.active').addBack();
-    /** @type {jQuery|null} */
-    this.selected = $active.length ? $active : null;
+    this.allowActiveDeselect = config.allowActiveDeselect || false;
+
+    this.selected = null;
+
+    this.eachItems(function (i, node) {
+        if (node.classList.contains('active')) {
+            self.selected = node;
+        }
+    });
 
     this.handleEvents();
 };
 
-Selectable.constructor = Selectable;
-
+Selectable.prototype = Object.create(EventEmitter.prototype);
+Selectable.prototype.constructor = Selectable;
 module.exports = Selectable;
+
+
 
 /**
  *
+ * @param {function} cb
+ * @param {scope} scope
  */
-Selectable.prototype.handleEvents = function(){
+Selectable.prototype.eachItems = function (cb, scope) {
+    var i = 0;
+    for (i; i < this.items.length; i++) {
+        cb.call(scope, i, this.items[i]);
+    }
+};
+
+/**
+ * @returns {boolean}
+ */
+Selectable.prototype.hasSelection = function () {
+    return !!this.selected;
+};
+
+/**
+ *
+ * @param {event}  ev
+ */
+Selectable.prototype.onItemMouseDown = function (ev) {
+
+    var newItem = ev.currentTarget;
+    var oldItem = this.selected;
+    var newIsActive = newItem.classList.contains(this.activeClass);
+    var newIsDisabled = newItem.classList.contains('disabled');
+
+    if (newIsDisabled || (newIsActive && !this.allowActiveDeselect)) {
+        //do nothing if it's already selected
+        return;
+    }
+    if (newIsActive && this.allowActiveDeselect) {
+        newItem.classList.remove(this.activeClass);
+        this.emit('selectable.change', null, newItem);
+        return;
+    }
+
+    if (oldItem) {
+        oldItem.classList.remove(this.activeClass);
+    }
+
+    newItem.classList.add(this.activeClass);
+    this.selected = newItem;
+
+    this.emit('selectable.change', newItem, oldItem);
+};
+
+/**
+ * @fires selectable.change
+ */
+Selectable.prototype.handleEvents = function () {
 
     var self = this;
-    self.items.on('click', function(ev){
-        var $newItem = $(this);
-        var $oldItem = self.selected;
 
-        if($newItem.hasClass(self.activeClass) || $newItem.hasClass('disabled') ) {
-            //do nothing if it's already selected
-            return;
-        }else if($oldItem){
-            $oldItem.removeClass(self.activeClass);
-        }
-
-        $newItem.addClass(self.activeClass);
-
-        self.selected = $newItem;
-
-        $newItem.trigger('selectable.change', [$newItem, $oldItem]);
+    this.eachItems(function (i, node) {
+        node.addEventListener('click', self.onItemMouseDown.bind(self));
+        //node.addEventListener('touchstart', self.onItemMouseDown.bind(self));
     });
 };
 
 /**
- * Unbinds event handlers
+ *
  */
-Selectable.prototype.destroy = function(){
-    this.items.off('click');
+Selectable.prototype.deselectSelected = function () {
+
+    var self = this;
+    var selected = this.selected;
+
+    this.eachItems(function (i, node) {
+        node.classList.remove(self.activeClass);
+    });
+
+
+    if (selected !== null) {
+        this.selected = null;
+        this.emit('selectable.change', null, selected);
+    }
 };
 
+Selectable.prototype.destroy = function () {
+    var self = this;
+
+    this.eachItems(function (i, node) {
+        node.removeEventListener('mousedown', self.onItemMouseDown.bind(self));
+        node.removeEventListener('touchstart', self.onItemMouseDown.bind(self));
+    });
+};

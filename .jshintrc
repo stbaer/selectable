@@ -26,7 +26,6 @@
     "esnext": false,
     "globals": {
         "console": true,
-        "global": true,
         "browserify": true
     }
 }

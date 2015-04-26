@@ -1,8 +1,11 @@
 {
   "name": "selectable",
-  "version": "0.0.0",
-  "description": "Simple helper class to make items selectable",
+  "version": "0.0.1",
+  "description": "Simple single-select for html elements",
   "main": "index.js",
+  "dependencies": {
+    "eventemitter3": "~1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,7 +15,7 @@
   },
   "keywords": [
     "select",
-    "jQuery",
+    "module",
     "browserify"
   ],
   "author": "Steffen Bär",
