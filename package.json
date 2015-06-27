@@ -1,10 +1,10 @@
 {
-  "name": "selectable",
-  "version": "0.0.1",
+  "name": "simple-selectable",
+  "version": "0.0.2",
   "description": "Simple single-select for html elements",
   "main": "index.js",
   "dependencies": {
-    "eventemitter3": "~1"
+    "eventemitter3": "^1.1.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,5 +23,5 @@
   "bugs": {
     "url": "https://github.com/stbaer/selectable/issues"
   },
-  "homepage": "https://github.com/stbaer/selectable"
+  "homepage": "https://github.com/stbaer/selectable",
 }

@@ -104,7 +104,6 @@ Selectable.prototype.handleEvents = function () {
 
     this.eachItems(function (i, node) {
         node.addEventListener('click', self.onItemMouseDown.bind(self));
-        //node.addEventListener('touchstart', self.onItemMouseDown.bind(self));
     });
 };
 
@@ -120,7 +119,6 @@ Selectable.prototype.deselectSelected = function () {
         node.classList.remove(self.activeClass);
     });
 
-
     if (selected !== null) {
         this.selected = null;
         this.emit('selectable.change', null, selected);
@@ -131,7 +129,7 @@ Selectable.prototype.destroy = function () {
     var self = this;
 
     this.eachItems(function (i, node) {
-        node.removeEventListener('mousedown', self.onItemMouseDown.bind(self));
-        node.removeEventListener('touchstart', self.onItemMouseDown.bind(self));
+        node.removeEventListener('mousedown', self.onItemMouseDown);
+        node.removeEventListener('touchstart', self.onItemMouseDown);
     });
 };

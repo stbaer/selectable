@@ -1,16 +1,14 @@
-## selectable
+# selectable
+
 Simple single-select for html elements
 
-### Dependencies
-[eventemitter3](git://github.com/primus/EventEmitter3.git)
+[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
-### Install
+## Install
 
-```
-npm i stbaer/selectable
-```
+[![NPM](https://nodei.co/npm/simple-selectable.png)](https://nodei.co/npm/simple-selectable/)
 
-### Usage
+## Usage
 
 ```js
 Selectable = require('selectable')
@@ -21,3 +19,5 @@ new Selectable({ items: document.querySelectorAll('.items') })
        })
 ```
 
+## License
+MIT
