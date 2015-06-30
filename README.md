@@ -2,7 +2,7 @@
 
 Simple single-select for html elements
 
-[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
+[![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
 
 ## Install
 
@@ -11,7 +11,7 @@ Simple single-select for html elements
 ## Usage
 
 ```js
-Selectable = require('selectable')
+Selectable = require('simple-selectable')
 
 new Selectable({ items: document.querySelectorAll('.items') })
       .on('selectable.change', function(ev, newItem, oldItem){
