@@ -1,16 +1,19 @@
 {
   "name": "simple-selectable",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Simple single-select for html elements",
   "main": "index.js",
   "dependencies": {
     "eventemitter3": "^1.1.1"
   },
+  "devDependencies": {
+    "jshint": "^2.8.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jshint": "./node_modules/.bin/jshint ./index.js"
   },
-  "repository": "stbaer/selectable"
-  },
+  "repository": "stbaer/selectable",
   "keywords": [
     "select",
     "module",
