@@ -1,0 +1,26 @@
+<!doctype html>
+
+<head>
+    <style>
+        .item-group{ margin: 10px 10px 50px; }
+        .item-group >div {
+            border: 1px solid gray;
+            display: inline-block;
+            margin: 5px;
+            padding: 2px 5px;
+            width: 150px;
+        }
+        .item-group >div:hover{cursor: pointer; }
+        .active{ background: red; color:white; }
+    </style>
+</head>
+<body>
+    <h2>Defaults</h2>
+    <div class="item-group group1"></div>
+    <h2><code>allowActiveDeselect = true</code></h2>
+    <div class="item-group group2"></div>
+    <h2><code>item acivated by class name before init</code></h2>
+    <div class="item-group group3"></div>
+
+    <script src="{{entry}}"></script>
+</body>

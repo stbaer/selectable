@@ -22,7 +22,6 @@ var EventEmitter = require('eventemitter3');
 var Selectable = function (config) {
 
     EventEmitter.call(this);
-    var self = this;
 
     this.items = config.items;
     this.activeClass = config.activeClass || 'active';
@@ -30,20 +29,18 @@ var Selectable = function (config) {
 
     this.selected = null;
 
+    this.onItemMouseDownHandler = this.onItemMouseDown.bind(this);
     this.eachItems(function (i, node) {
         if (node.classList.contains('active')) {
-            self.selected = node;
+            this.selected = node;
         }
-    });
+        node.addEventListener('click', this.onItemMouseDownHandler);
+    }, this);
 
-    this.handleEvents();
 };
 
 Selectable.prototype = Object.create(EventEmitter.prototype);
 Selectable.prototype.constructor = Selectable;
-module.exports = Selectable;
-
-
 
 /**
  *
@@ -52,7 +49,9 @@ module.exports = Selectable;
  */
 Selectable.prototype.eachItems = function (cb, scope) {
     var i = 0;
-    for (i; i < this.items.length; i++) {
+    var n = this.items.length;
+
+    for (i; i < n; i++) {
         cb.call(scope, i, this.items[i]);
     }
 };
@@ -96,28 +95,15 @@ Selectable.prototype.onItemMouseDown = function (ev) {
 };
 
 /**
- * @fires selectable.change
- */
-Selectable.prototype.handleEvents = function () {
-
-    var self = this;
-
-    this.eachItems(function (i, node) {
-        node.addEventListener('click', self.onItemMouseDown.bind(self));
-    });
-};
-
-/**
  *
  */
 Selectable.prototype.deselectSelected = function () {
 
-    var self = this;
     var selected = this.selected;
 
     this.eachItems(function (i, node) {
-        node.classList.remove(self.activeClass);
-    });
+        node.classList.remove(this.activeClass);
+    }, this);
 
     if (selected !== null) {
         this.selected = null;
@@ -126,10 +112,12 @@ Selectable.prototype.deselectSelected = function () {
 };
 
 Selectable.prototype.destroy = function () {
-    var self = this;
 
     this.eachItems(function (i, node) {
-        node.removeEventListener('mousedown', self.onItemMouseDown);
-        node.removeEventListener('touchstart', self.onItemMouseDown);
-    });
+        node.removeEventListener('click', this.onItemMouseDownHandler);
+    }, this);
+
 };
+
+
+module.exports = Selectable;

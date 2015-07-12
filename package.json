@@ -1,16 +1,18 @@
 {
   "name": "simple-selectable",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Simple single-select for html elements",
   "main": "index.js",
   "dependencies": {
     "eventemitter3": "^1.1.1"
   },
   "devDependencies": {
-    "jshint": "^2.8.0"
+    "beefy": "^2.1.5",
+    "jshint": "^2.8.0",
+    "watchify": "^3.2.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": " beefy test/visual.js --index=test/index.html --live",
     "jshint": "./node_modules/.bin/jshint ./index.js"
   },
   "repository": "stbaer/selectable",
