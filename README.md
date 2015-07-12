@@ -15,7 +15,8 @@ Selectable = require('simple-selectable')
 
 var selectable = new Selectable({ 
     items: document.querySelectorAll('.items'), 
-    allowActiveDeselect: false                  //optional, deselect active icon if clicked. Defaults to false
+    allowActiveDeselect: false                  //optional, deselect active item if clicked. 
+Defaults to false
     });
 ```
 
