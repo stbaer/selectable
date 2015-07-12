@@ -13,9 +13,11 @@ for(var i= 0; i<70; i++){
     var item3 = document.createElement('div');
     item3.appendChild( document.createTextNode('Group3 Item' + i) );
     if(i===50) {
-        //set active before init test
         item3.classList.add('active');
+    }else if(i>=15 && i<25){
+        item3.classList.add('disabled');
     }
+
     groupOneContainer.appendChild(item1);
     groupTwoContainer.appendChild(item2);
     groupThreeContainer.appendChild(item3);

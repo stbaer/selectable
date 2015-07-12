@@ -111,6 +111,9 @@ Selectable.prototype.deselectSelected = function () {
     }
 };
 
+/**
+ *
+ */
 Selectable.prototype.destroy = function () {
 
     this.eachItems(function (i, node) {

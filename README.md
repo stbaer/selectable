@@ -26,11 +26,11 @@ selectable.on('selectable.change', function(ev, newItem, oldItem){
        })
 ```
 
+*items containing a 'disabled' class can't be activated* 
+
 **Destroy**
 ```
-selectable.on('selectable.change', function(ev, newItem, oldItem){
-          //do sth
-       })
+selectable.destroy()
 ```
 
 ## License
