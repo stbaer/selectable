@@ -22,7 +22,7 @@ Defaults to false
 
 **Listen to changes**
 ```
-selectable.on('selectable.change', function(ev, newItem, oldItem){
+selectable.on('selectable.change', function(newItem, oldItem){
           //do sth
        })
 ```
