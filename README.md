@@ -6,7 +6,7 @@
 
 ## Install
 
-[![NPM](https://nodei.co/npm/simple-selectable.png)](https://nodei.co/npm/simple-selectable/)
+[![NPM](https://nodei.co/npm/simple-selectable.png?downloads=true)](https://nodei.co/npm/simple-selectable/)
 
 ## Usage
 
@@ -15,8 +15,7 @@ Selectable = require('simple-selectable')
 
 var selectable = new Selectable({ 
     items: document.querySelectorAll('.items'), 
-    allowActiveDeselect: false                  //optional, deselect active item if clicked. 
-Defaults to false
+    allowActiveDeselect: false                  //Optional, deselect active item if clicked. Defaults to false,
     });
 ```
 
