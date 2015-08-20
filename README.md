@@ -11,7 +11,8 @@
 ## Usage
 
 ```js
-Selectable = require('simple-selectable')
+var Selectable = 
+require('simple-selectable')
 
 var selectable = new Selectable({ 
     items: document.querySelectorAll('.items'), 
