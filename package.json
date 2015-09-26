@@ -1,6 +1,6 @@
 {
   "name": "simple-selectable",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Simple single-select for html elements",
   "main": "index.js",
   "dependencies": {
@@ -8,12 +8,12 @@
   },
   "devDependencies": {
     "beefy": "^2.1.5",
-    "browserify": "^11.0.1",
+    "browserify": "^11.2.0",
     "jshint": "^2.8.0",
-    "uglifyjs": "latest"
+    "uglify-js": "latest"
   },
   "scripts": {
-    "uglify:dist": "uglifyjs ./dist/selectable.js --screw-ie8 -m > ./dist/selectable.min.js",
+    "uglify:dist": "uglifyjs ./dist/selectable.js --screw-ie8 -mc > ./dist/selectable.min.js",
     "show-gzipped-minjs-size": "echo \"js minified and gzipped: \" && gzip -c dist/selectable.min.js | wc -c",
     "uglify": "npm run uglify:dist && npm run show-gzipped-minjs-size",
     "test": "beefy test/visual.js --index=test/index.html --live",
