@@ -2,7 +2,7 @@
 
 > Simple single-select for html elements - [Examples](http://stbaer.github.io/selectable/)
 
-[![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
+[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
 ## Install
 
