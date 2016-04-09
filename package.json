@@ -1,6 +1,6 @@
 {
   "name": "simple-selectable",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "description": "Simple single-select for html elements",
   "main": "index.js",
   "dependencies": {
