@@ -21,13 +21,16 @@
     "jshint": "./node_modules/.bin/jshint ./index.js",
     "start": "npm run build && npm run test"
   },
-  "repository": "stbaer/selectable",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stbaer/selectable"
+  },
   "keywords": [
     "select",
     "module",
     "browserify"
   ],
-  "author": "Steffen Bär",
+  "author": "Steffen Baer <stbaer.pub@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/stbaer/selectable/issues"
