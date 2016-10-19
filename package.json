@@ -4,12 +4,12 @@
   "description": "Simple single-select for html elements",
   "main": "index.js",
   "dependencies": {
-    "eventemitter3": "^1.1.1"
+    "eventemitter3": "^2.0"
   },
   "devDependencies": {
     "beefy": "^2.1.5",
     "browserify": "^13.0.0",
-    "jshint": "^2.8.0",
+    "jshint": "latest",
     "uglify-js": "latest"
   },
   "scripts": {
@@ -18,7 +18,7 @@
     "uglify": "npm run uglify:dist && npm run show-gzipped-minjs-size",
     "test": "beefy test/visual.js --index=test/index.html --live",
     "build": "browserify index.js --standalone Selectable > dist/selectable.js && npm run uglify",
-    "jshint": "./node_modules/.bin/jshint ./index.js",
+    "jshint": "jshint ./index.js",
     "start": "npm run build && npm run test"
   },
   "repository": {
