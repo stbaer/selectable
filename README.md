@@ -10,12 +10,12 @@
 
 ## Usage
 
-```js
-var Selectable = 
+```
+var Selectable =
 require('simple-selectable')
 
-var selectable = new Selectable({ 
-    items: document.querySelectorAll('.items'), 
+var selectable = new Selectable({
+    items: document.querySelectorAll('.items'),
     allowActiveDeselect: false                  //Optional, deselect active item if clicked. Defaults to false,
     });
 ```
@@ -27,7 +27,7 @@ selectable.on('selectable.change', function(newItem, oldItem){
        })
 ```
 
-*items containing a 'disabled' class can't be activated* 
+*items containing a 'disabled' class can't be activated*
 
 **Destroy**
 ```
